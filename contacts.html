@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacts | Kiyushi.com</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #fbfaf3;
+  --surface: #ffffff;
+  --ink: #1f3a2d;
+  --soft: #4a6155;
+  --line: #dbe7de;
+  --mint: #d6f0e1;
+  --sage: #8fb8a0;
+  --green: #2f6b4f;
+  --pink: #f9dfe6;
+  --shadow: 0 12px 30px rgba(37,83,59,.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+.top-strip {
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    #dff5e8,
+    #bfe8cf,
+    #f9dfe6,
+    #dff5e8
+  );
+}
+
+/* NAVIGATION */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffffed;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  width: min(1160px, calc(100% - 36px));
+  min-height: 90px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #d9f1e3;
+  font-size: 25px;
+  transform: rotate(-4deg);
+}
+
+.brand em {
+  font: 700 24px 'Caveat', cursive;
+  color: var(--green);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.7vw, 24px);
+}
+
+.nav-links a {
+  color: var(--soft);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+.nav-links a[aria-current="page"] {
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: #e0f3e8;
+  color: var(--green);
+}
+
+.nav-links .start {
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--green);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* HERO BANNER */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 52px 20px 48px;
+  background: linear-gradient(
+    125deg,
+    #dff5e8,
+    #c9ecd9 48%,
+    #a8dfc3
+  );
+  border-bottom: 1px solid #c4e4d0;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #ffffffa6;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 180px;
+  height: 180px;
+  left: -65px;
+  top: 10px;
+}
+
+.hero::after {
+  width: 220px;
+  height: 220px;
+  right: -75px;
+  top: -90px;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1160px, 100%);
+  margin: auto;
+}
+
+.welcome {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: #ffffffd9;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 12px 0 0;
+  font: 700 clamp(48px, 7vw, 76px)/1 'Caveat', cursive;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 12px 0 0;
+  color: #49695a;
+}
+
+.doodle {
+  position: absolute;
+  top: 8px;
+  right: 10%;
+  font-size: 58px;
+  opacity: .65;
+}
+
+.sparkle {
+  position: absolute;
+  color: white;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.one {
+  top: 22px;
+  right: 26%;
+  font-size: 26px;
+}
+
+.two {
+  bottom: 20px;
+  right: 7%;
+  font-size: 23px;
+  animation-delay: 1s;
+}
+
+.three {
+  bottom: 15px;
+  left: 44%;
+  font-size: 22px;
+  animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: .5;
+    transform: scale(.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(12deg);
+  }
+}
+
+/* MAIN CONTENT */
+main {
+  width: min(1060px, calc(100% - 36px));
+  margin: auto;
+  padding: 38px 0 70px;
+}
+
+.section-heading {
+  text-align: center;
+  margin: 0 0 22px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(23px, 3vw, 30px);
+}
+
+.section-heading p {
+  margin: 5px 0 0;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+/* CONTACT CARDS */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 23px;
+  background: white;
+  box-shadow: 0 6px 18px #25533b0e;
+  transition: transform .22s, box-shadow .22s;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.contact-card::after {
+  content: "✧";
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  color: #b9d9c4;
+  font-size: 24px;
+}
+
+.contact-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: var(--mint);
+  color: var(--green);
+}
+
+.contact-card:nth-child(2) .contact-icon {
+  background: var(--pink);
+}
+
+.contact-card:nth-child(3) .contact-icon {
+  background: #e9e8fb;
+}
+
+.contact-card:nth-child(4) .contact-icon {
+  background: #fff0c9;
+}
+
+.contact-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.contact-card h3 {
+  margin: 14px 0 5px;
+  font-size: 19px;
+}
+
+.contact-card p {
+  min-height: 48px;
+  margin: 0 0 17px;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+/* BUTTONS */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 17px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: #24563e;
+}
+
+.button.secondary {
+  background: #e5f3e9;
+  color: var(--green);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--sage);
+  outline-offset: 3px;
+}
+
+/* LOCATION / MAP */
+.location-section,
+.message-section {
+  margin-top: 46px;
+}
+
+.location-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.location-top {
+  position: relative;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.location-top h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.location-top p {
+  margin: 5px 0 0;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+.map-tape {
+  position: absolute;
+  top: -1px;
+  right: 32px;
+  width: 82px;
+  height: 18px;
+  transform: rotate(3deg);
+  background: repeating-linear-gradient(
+    135deg,
+    #c7e8d4 0 6px,
+    #e9f7ee 6px 12px
+  );
+  box-shadow: 0 2px 5px #1f3a2d12;
+}
+
+.map-placeholder {
+  min-height: 230px;
+  padding: 30px 20px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #e4f4e9, #f9e6ec);
+}
+
+.pin {
+  font-size: 42px;
+}
+
+.map-placeholder h4 {
+  margin: 7px 0 3px;
+  font-size: 18px;
+}
+
+.map-placeholder p {
+  max-width: 480px;
+  margin: 0;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+.map-frame {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 20px;
+}
+
+.map-note {
+  color: var(--soft);
+  font-size: 12px;
+}
+
+/* CONTACT FORM */
+.message-card {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  background: white;
+  box-shadow: 0 7px 22px #25533b0f;
+}
+
+.message-intro {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.message-intro h2 {
+  margin: 0;
+  font-size: clamp(23px, 3vw, 29px);
+}
+
+.message-intro p {
+  margin: 5px 0 0;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fffefa;
+  color: var(--ink);
+  outline: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px #8fb8a02e;
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.form-note {
+  flex: 1;
+  min-width: 200px;
+  color: var(--soft);
+  font-size: 12px;
+}
+
+.form-status {
+  margin: 12px 0 0;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* CLOSING NOTE */
+.little-note {
+  margin-top: 28px;
+  padding: 23px;
+  text-align: center;
+  border: 1px dashed #a8cbb5;
+  border-radius: 23px;
+  background: linear-gradient(120deg, #eef8f0, #fff7f8);
+}
+
+.little-note strong {
+  font: 700 32px 'Caveat', cursive;
+  color: var(--green);
+}
+
+.little-note p {
+  margin: 5px 0 0;
+  color: var(--soft);
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  padding: 24px 18px;
+  text-align: center;
+  background: #edf6ef;
+  color: var(--soft);
+  font-size: 13px;
+}
+
+footer strong {
+  color: var(--green);
+}
+
+/* RESPONSIVE NAVIGATION */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    padding: 14px 20px 18px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 12px;
+  }
+
+  .nav-links a[aria-current="page"] {
+    border-radius: 12px;
+  }
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 650px) {
+  .nav {
+    width: calc(100% - 28px);
+    min-height: 75px;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    font-size: 21px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .brand em {
+    font-size: 20px;
+  }
+
+  .hero {
+    padding: 42px 20px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .doodle {
+    right: 4%;
+    font-size: 36px;
+  }
+
+  main {
+    width: calc(100% - 28px);
+    padding-top: 28px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+
+  .contact-card p {
+    min-height: 0;
+  }
+
+  .location-section,
+  .message-section {
+    margin-top: 35px;
+  }
+
+  .location-top {
+    padding: 22px 18px 16px;
+  }
+
+  .map-frame {
+    height: 270px;
+  }
+
+  .map-placeholder {
+    min-height: 210px;
+  }
+
+  .map-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .form-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip" aria-hidden="true"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <a class="brand" href="Index.Html" aria-label="Kiyushi.com home"><img src="images/logo.png" alt="Logo"width = 100>
+      <span>Kiyushi<em>.com</em></span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="navLinks"
+    >☰</button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="gallery.html">Gallery</a>
+      <a href="aboutme.html">About</a>
+      <a href="contacts.html" aria-current="page">Contacts</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO BANNER -->
+<section class="hero">
+  <span class="doodle" aria-hidden="true">✿</span>
+  <span class="sparkle one" aria-hidden="true">✦</span>
+  <span class="sparkle two" aria-hidden="true">♡</span>
+  <span class="sparkle three" aria-hidden="true">✧</span>
+
+  <div class="hero-inner">
+    <span class="welcome">♥ Let's Connect!</span>
+    <h1>Contact Me ♡</h1>
+    <p>
+      Have a question, want to say hello, or just want to connect?
+      I'd love to hear from you!
+    </p>
+  </div>
+</section>
+
+<main>
+
+  <!-- SOCIAL MEDIA CONTACT CARDS -->
+  <section aria-labelledby="contactHeading">
+    <div class="section-heading">
+      <h2 id="contactHeading">Find me around the internet 🌷</h2>
+         </div>
+
+    <div class="contact-grid">
+
+      <!-- FACEBOOK -->
+      <article class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"
+               role="img" aria-label="Facebook">
+            <path d="M13.4 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.2v3.2H10V21h3.4z"/>
+          </svg>
+        </div>
+
+        <h3>Find me on Facebook</h3>
+        <p>Let's connect and keep in touch!</p>
+
+        <a class="button"
+           href="https://www.facebook.com/profile.php?id=61595683134900"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit My Facebook ↗
+        </a>
+      </article>
+                        
+    </div>
+  </section>
+
+  <!-- LOCATION / MAP -->
+  <section class="location-section" aria-labelledby="locationHeading">
+    <div class="section-heading">
+      <h2 id="locationHeading">Find My Little Corner 📍</h2>
+        </div>
+
+    <div class="location-card">
+      <div class="location-top">
+        <span class="map-tape" aria-hidden="true"></span>
+        <h3>♡ My Location</h3>
+        <p id="locationDescription">
+                 </p>
+      </div>
+
+      <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d577337.0368744708!2d36.7258634145945!3d55.58072951935602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54afc73d4b0c9%3A0x3d44d6cc5757cf4c!2sMoscow%2C%20Russia!5e0!3m2!1sen!2sph!4v1792478421673!5m2!1sen!2sph" 
+      width= 100%;
+      height= 400px; 
+      display= block;
+      style="border:0;" 
+      allowfullscreen="true" 
+      loading="lazy" 
+      referrerpolicy="strict-origin-when-cross-origin">
+      </iframe>
+
+      <div class="map-actions">
+        <span class="map-note">
+                 </span>
+
+        <a class="button secondary"
+           id="openMap"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="display:none">
+          Open Map ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="message-section" aria-labelledby="messageHeading">
+    <div class="message-card">
+
+      <div class="message-intro">
+        <h2 id="messageHeading">Leave Me a Message 💌</h2>
+        <p>
+          Fill this in and your email app can open with your message ready to send.
+        </p>
+      </div>
+
+      <form id="contactForm">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="senderName">Your name</label>
+            <input
+              id="senderName"
+              name="senderName"
+              type="text"
+              placeholder="What should I call you?"
+              autocomplete="name"
+              required
+              maxlength="100"
+            >
+          </div>
+
+          <div class="field">
+            <label for="senderEmail">Your email</label>
+            <input
+              id="senderEmail"
+              name="senderEmail"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+              maxlength="150"
+            >
+          </div>
+
+          <div class="field full">
+            <label for="subject">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="What's this about?"
+              required
+              maxlength="150"
+            >
+          </div>
+
+          <div class="field full">
+            <label for="message">Your message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message here... ♡"
+              required
+              maxlength="5000"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-bottom">
+          <span class="form-note">
+            This form opens your email app. It does not send or store messages by itself.
+          </span>
+
+          <button class="button" type="submit">
+            Prepare Email ✉
+          </button>
+        </div>
+
+        <p class="form-status" id="formStatus"
+           role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CLOSING NOTE -->
+  <section class="little-note">
+    <strong>A little note from me ♡</strong>
+    <p>
+      Thank you for visiting my little corner of the internet.
+      Wishing you a soft and lovely day! ✨
+    </p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  Made with ♥ and a little sparkle by <strong>Kiyushi.com</strong>
+</footer>
+
+<script>
+/* MOBILE NAVIGATION */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu"
+  );
+
+  menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+    menuToggle.textContent = "☰";
+  });
+});
+
+
+/* MAP SETUP
+   Add a PUBLIC place or general area below.
+   Example: "Rizal Park, Manila, Philippines"
+   Leave empty to show the placeholder.
+*/
+const sharedLocation = "";
+
+const mapFrame = document.getElementById("mapFrame");
+const mapPlaceholder = document.getElementById("mapPlaceholder");
+const openMap = document.getElementById("openMap");
+const locationDescription =
+  document.getElementById("locationDescription");
+
+if (sharedLocation.trim()) {
+  const encodedLocation = encodeURIComponent(sharedLocation.trim());
+
+  mapFrame.src =
+    "https://www.google.com/maps?q=" +
+    encodedLocation +
+    "&output=embed";
+
+  mapFrame.style.display = "block";
+  mapPlaceholder.style.display = "none";
+
+  openMap.href =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodedLocation;
+
+  openMap.style.display = "inline-flex";
+
+  locationDescription.textContent =
+    "Map for the public place or area I chose to share.";
+}
+
+
+/* CONTACT FORM
+   Replace the example email with your intended recipient email.
+   This uses the visitor's email application; it does not send
+   or store messages by itself.
+*/
+const recipientEmail = "YOUR_EMAIL@example.com";
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+contactForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (!contactForm.reportValidity()) {
+    return;
+  }
+
+  if (recipientEmail === "YOUR_EMAIL@example.com") {
+    formStatus.textContent =
+      "Please replace YOUR_EMAIL@example.com in the script with your email address first.";
+    return;
+  }
+
+  const name = document.getElementById("senderName").value.trim();
+  const email = document.getElementById("senderEmail").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const body =
+    "Name: " + name +
+    "\nReply email: " + email +
+    "\n\n" + message;
+
+  const mailto =
+    "mailto:" + recipientEmail +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  formStatus.textContent =
+    "Opening your email application. Review the message and press Send there.";
+
+  window.location.href = mailto;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d6f0e1">
+  <title>About Me | Kiyushi.com</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fbfaf3;
+      --surface: #ffffff;
+      --ink: #1f3a2d;
+      --soft: #4a6155;
+      --line: #dbe7de;
+      --mint: #d6f0e1;
+      --green: #2f6b4f;
+      --pink: #f9dfe6;
+      --shadow: 0 12px 30px rgba(37, 83, 59, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Quicksand", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .top-strip {
+      height: 8px;
+      background: linear-gradient(
+        90deg,
+        #dff5e8,
+        #bfe8cf,
+        #f9dfe6,
+        #dff5e8
+      );
+    }
+
+    /* NAVIGATION */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      width: min(1160px, calc(100% - 36px));
+      min-height: 94px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      background: #d9f1e3;
+      border-radius: 15px;
+      font-size: 25px;
+      transform: rotate(-4deg);
+    }
+
+    .brand em {
+      font-family: "Caveat", cursive;
+      font-style: normal;
+      color: var(--green);
+      font-size: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2vw, 28px);
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--soft);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-links a[aria-current="page"] {
+      background: #e0f3e8;
+      color: var(--green);
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .nav-links .start-btn {
+      background: var(--green);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: white;
+      color: var(--green);
+      font-size: 22px;
+      padding: 5px 12px;
+      cursor: pointer;
+    }
+
+    /* HERO BANNER */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 60px 20px 54px;
+      background: linear-gradient(
+        125deg,
+        #dff5e8,
+        #c9ecd9 48%,
+        #a8dfc3
+      );
+      border-bottom: 1px solid #c4e4d0;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 180px;
+      height: 180px;
+      left: -65px;
+      top: 20px;
+    }
+
+    .hero::after {
+      width: 230px;
+      height: 230px;
+      right: -80px;
+      top: -80px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, 100%);
+      margin: auto;
+    }
+
+    .welcome {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 12px 0 0;
+      font-family: "Caveat", cursive;
+      font-size: clamp(52px, 7vw, 80px);
+      line-height: 1;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: #49695a;
+      margin: 12px 0 0;
+      font-size: 17px;
+    }
+
+    .doodle {
+      position: absolute;
+      right: 10%;
+      top: 8px;
+      font-size: 64px;
+      opacity: 0.7;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: white;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .sparkle.one {
+      right: 25%;
+      top: 25px;
+      font-size: 27px;
+    }
+
+    .sparkle.two {
+      right: 7%;
+      bottom: 20px;
+      font-size: 22px;
+      animation-delay: 1s;
+    }
+
+    .sparkle.three {
+      left: 44%;
+      bottom: 18px;
+      font-size: 22px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(12deg);
+      }
+    }
+
+    /* MAIN CONTENT */
+
+    main {
+      width: min(1060px, calc(100% - 36px));
+      margin: auto;
+      padding: 46px 0 72px;
+    }
+
+    .intro-card {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.4fr);
+      align-items: center;
+      gap: 32px;
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    /* PROFILE PHOTO */
+
+    .profile-wrap {
+      position: relative;
+      padding: 12px;
+    }
+
+    .tape {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 50%;
+      width: 100px;
+      height: 23px;
+      transform: translateX(-50%) rotate(-4deg);
+      background: repeating-linear-gradient(
+        135deg,
+        #f5cbd8 0 6px,
+        #fbe5eb 6px 12px
+      );
+      box-shadow: 0 2px 4px rgba(31, 58, 45, 0.08);
+    }
+
+    .profile-frame {
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      overflow: hidden;
+      border: 8px solid #fffdf6;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #e4f4e9, #f9e6ec);
+      box-shadow: 0 5px 18px rgba(37, 83, 59, 0.1);
+      text-align: center;
+      padding: 18px;
+      color: var(--green);
+    }
+
+    .profile-frame img {
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .profile-placeholder .emoji {
+      display: block;
+      font-size: 58px;
+    }
+
+    .profile-placeholder strong {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .profile-placeholder small {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e8f5ec;
+      color: var(--green);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .intro-copy h2 {
+      margin: 12px 0 8px;
+      font-size: clamp(26px, 3vw, 35px);
+    }
+
+    .intro-copy p {
+      color: var(--soft);
+      margin: 12px 0;
+    }
+
+    .signature {
+      font-family: "Caveat", cursive;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--green);
+      margin-top: 16px;
+    }
+
+    /* THINGS I LOVE */
+
+    .section-title {
+      text-align: center;
+      margin: 46px 0 22px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 29px;
+    }
+
+    .section-title p {
+      margin: 6px 0 0;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 6px 18px rgba(37, 83, 59, 0.055);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--mint);
+      font-size: 24px;
+    }
+
+    .card:nth-child(2) .card-icon {
+      background: var(--pink);
+    }
+
+    .card:nth-child(3) .card-icon {
+      background: #e8e8fb;
+    }
+
+    .card h3 {
+      margin: 13px 0 6px;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    /* QUOTE */
+
+    .quote-card {
+      margin-top: 28px;
+      padding: 28px 24px;
+      text-align: center;
+      border: 1px dashed #a8cbb5;
+      border-radius: 24px;
+      background: linear-gradient(120deg, #eef8f0, #fff7f8);
+    }
+
+    .quote-mark {
+      font-family: "Caveat", cursive;
+      color: var(--green);
+      font-size: 54px;
+      line-height: 0.8;
+    }
+
+    .quote-card p {
+      max-width: 700px;
+      margin: 10px auto;
+      font-family: "Caveat", cursive;
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.3;
+    }
+
+    .quote-card small {
+      color: var(--soft);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 25px 20px;
+      text-align: center;
+      background: #edf6ef;
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: var(--green);
+    }
+
+    /* TABLET AND MOBILE */
+
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        padding: 15px 22px 20px;
+        background: white;
+        border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 13px;
+      }
+
+      .nav-links a[aria-current="page"] {
+        border-radius: 12px;
+      }
+
+      .intro-card {
+        gap: 20px;
+      }
+
+      .profile-frame {
+        min-height: 260px;
+      }
+
+      .profile-frame img {
+        height: 260px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        min-height: 76px;
+        width: calc(100% - 28px);
+        gap: 10px;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+      }
+
+      .brand {
+        font-size: 17px;
+      }
+
+      .brand em {
+        font-size: 20px;
+      }
+
+      .hero {
+        padding: 43px 20px 45px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .doodle {
+        right: 4%;
+        font-size: 35px;
+      }
+
+      main {
+        padding-top: 28px;
+      }
+
+      .intro-card {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 18px;
+      }
+
+      .profile-wrap {
+        width: 100%;
+        max-width: 390px;
+        margin: auto;
+      }
+
+      .profile-frame {
+        min-height: 250px;
+      }
+
+      .profile-frame img {
+        height: 250px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .card {
+        padding: 19px;
+      }
+
+      .section-title {
+        margin-top: 36px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-strip" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="nav">
+      <a class="brand" href="Index.Html" aria-label="Kiyushi.com home">
+        <img src="Images/logo.png" alt="Logo" width="100">
+        <span>Kiyushi<em>.com</em></span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="Index.Html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contacts.html">Contacts</a>  
+
+        <a class="start-btn" href="Index.Html#study">Start Studying</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="doodle" aria-hidden="true">✿</span>
+    <span class="sparkle one" aria-hidden="true">✦</span>
+    <span class="sparkle two" aria-hidden="true">♡</span>
+    <span class="sparkle three" aria-hidden="true">✧</span>
+
+    <div class="hero-inner">
+      <div class="welcome">♥ A little introduction</div>
+      <h1>About Me ♡</h1>
+      <p>A small page about the person behind this cozy little corner of Kiyushi.com.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="intro-card">
+      <div class="profile-wrap">
+        <span class="tape" aria-hidden="true"></span>
+
+        <div class="profile-frame" id="profileFrame">
+          <div class="profile-placeholder" id="profilePlaceholder">
+            <img src="Images/8c2446d3-4aa8-4327-af0b-1ee6c0301085.jfif" alt="ProfilePicture">
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-copy">
+        <span class="tag">🌱 A little about me</span>
+        <h2>Hello, lovely! ♡</h2>
+
+        <p>
+          Welcome to my little corner of the internet! I'm the person behind
+          Kiyushi.com. My name is Kiyushi Laloach O. Valeriano a kind and motivated nurse. 
+        </p>
+
+        <p>
+          I'm working toward my goals one small step at a time. I believe
+          learning feels a little easier when we make room for creativity,
+          kindness, and breaks along the way.
+        </p>
+
+        <p>
+          This website is a place to collect study resources for fun, keep special
+          memories, and make everyday progress feel a bit more lovely.
+        </p>
+
+        <div class="signature">With love, Kiyushi ♡</div>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <h2>Things I love 🌷</h2>
+      <p>A few little things that make this corner feel like me.</p>
+    </div>
+
+    <section class="cards-grid" aria-label="Things I love">
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📚</div>
+        <h3>Learning new things</h3>
+        <p>
+          I enjoy finding helpful ways to study, organize ideas, and make
+          challenging topics feel more manageable.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">🌿</div>
+        <h3>Soft green aesthetics</h3>
+        <p>
+         I like green because it reminds me of my mom,she loves the color green.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">💗</div>
+        <h3>Little memories</h3>
+        <p>
+          I love the idea of saving meaningful moments and appreciating
+          the small things that brighten a day.
+        </p>
+      </article>
+    </section>
+
+    <section class="quote-card" aria-label="A little reminder">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <p>
+        You don't have to have everything figured out. Keep growing,
+        keep learning, and be kind to yourself along the way.
+      </p>
+      <small>A little reminder from Kiyushi.com ✨</small>
+    </section>
+  </main>
+
+  <footer>
+    Made with ♥ and a little sparkle by <strong>Kiyushi.com</strong>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Optional profile picture.
+    // Put your picture at Images/profile.jpg.
+    const profileFrame = document.getElementById("profileFrame");
+    const profilePhoto = new Image();
+
+    profilePhoto.src = "Images/profile.jpg";
+    profilePhoto.alt = "My profile photo";
+
+    profilePhoto.onload = () => {
+      profileFrame.replaceChildren(profilePhoto);
+      profileFrame.style.padding = "0";
+    };
+  </script>
+</body>
+</html>
